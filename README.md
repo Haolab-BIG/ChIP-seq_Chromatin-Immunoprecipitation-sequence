@@ -8,7 +8,7 @@ Here stands an throughout workflow of ChIP-seq data analysis.\
 As illustrated in the figure, \
 (i) yellow circles represent the steps where commands need to be entered; \
 (ii) gray circles indicate the data types handled at different steps; \
-(iii) pink dashed rectangular boxes represent the output results after processing at each step. \
+(iii) pink dashed rectangular boxes represent the output results after processing at each step. 
 
 We will proceed by structuring our workflow according to (iii).
 ## Part II
