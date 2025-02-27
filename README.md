@@ -1,5 +1,5 @@
 # ChIP-seq, Chromatin Immunoprecipitation sequence
-For everyone who has a new face to HaoLab, we make this pipeline/protocol to standardize downstream analysis pipeline for ChIP-Seq data.
+For everyone who has a new face to HaoLab, we make this pipeline/protocol to standardize downstream analysis pipeline for ChIP-seq data.
 ## Part I Workflow
 Here stands an throughout workflow of ChIP-seq data analysis.
 
