@@ -56,7 +56,11 @@ fastqc -o /ChIP-seq/1.raw_data/QC/ /ChIP-seq/1.raw_data/raw_data_1.fq.gz /ChIP-s
 Based on the quality control results, you can perform appropriate trimming on the raw data.
 
 ```
-NO SPECIFIC CODE
+java -jar trimmomatic-0.39.jar PE -threads 20 -phred33 \
+ChIP-seq/1.raw_data/_raw_1.fq.gz ChIP-seq/1.raw_data/_raw_2.fq.gz \
+ChIP-seq/2.clean_data/1.paired.fq.gz ChIP-seq/2.clean_data/1.unpaired.fq.gz \
+ChIP-seq/2.clean_data/2.paired.fq.gz ChIP-seq/2.clean_data/2.unpaired.fq.gz \
+ILLUMINACLIP:Trimmomatic-0.39/adapters/TruSeq3-PE-2.fa:2:30:10 SLIDINGWINDOW:4:15 AVGQUAL:20 MINLEN:36 HEADCROP:12
 ```
 
 ### iii. Mapping Clean Data to Genome, Filtering and Remove Duplicates
