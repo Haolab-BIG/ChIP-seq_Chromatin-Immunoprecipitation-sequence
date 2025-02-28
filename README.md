@@ -100,7 +100,7 @@ computeMatrix scale-regions -S /ChIP-seq/5.bw/.bw -R /ChIP-seq/6.peaks/prefix_pe
 **'.bw' file comes from Part (IV.i)**
 
 ### OUTPUT 1
-After completing the above steps, you will obtain a table similar to the one shown in 'example_report.ppt', slide (2), with columns including:\
+After completing the above steps, you will obtain a table similar to the one shown in 'example_report.ppt', slide (2), with columns including:
 
 **DataName, FileName, RawData, FilterData(QC), CleanReads%, UniqueMapped%, Duplicate%, UnDuplicated, and Peaks.**
 
