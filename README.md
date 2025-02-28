@@ -112,7 +112,7 @@ you will obtain a plot similar to the one shown in 'example_report.ppt', slide (
 plotFingerprint -b /ChIP-seq/3.bam/rmD_bam/.rmD.bam --labels label1 label2 --skipZeros --plotFile /ChIP-seq/4.fingerprint/.png
 ```
 
-### OUTPUT2
+### OUTPUT 2
 
 **By generating a fingerprint plot, you can identify the types of peaks, assess antibody strength to verify the effectiveness of immunoprecipitation (IP).**
 
@@ -135,3 +135,6 @@ multiBigwigSummary bins -b /ChIP-seq/5.bw/.bw --labels label1 label2 label3 -out
 plotPCA -in /ChIP-seq/5.bw/multiBigWigSummary/.npz -o /ChIP-seq/5.bw/PCA/PCA.pdf
 plotCorrelation  -in /ChIP-seq/5.bw/multiBigWigSummary/.npz --corMethod pearson --skipZeros -o /ChIP-seq/5.bw/PCA/correlation/cor.pdf --whatToPlot heatmap --colorMap RdYlBu --plotNumbers
 ```
+### OUTPUT 3
+
+**By generating Principal Component Analysis (PCA) plots and correlation heatmaps, you can assess biological reproducibility, experimental quality, and the extent of batch effects.**
