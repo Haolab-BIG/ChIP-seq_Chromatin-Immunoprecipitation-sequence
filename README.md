@@ -43,17 +43,17 @@ conda create -n ChIP-seq fastqc Trimmomatic bowtie2 samtools Picard deeptools MA
 ```
 
 ## Part II Generation of Data for Analysis: FASTQ2BAM
-In this section, you will convert the raw FASTQ files into BAM files, which can be used for subsequent analysis.
+In this section, you will convert the raw FASTQ files into BAM files, which can be used for subsequent analysis./
 
 ### i.Raw Data Quality Check(QC)
-You can perform quality check on the raw data to assess the sequencing quality.
+You can perform quality check on the raw data to assess the sequencing quality./
 
 ```
 fastqc -o /ChIP-seq/1.raw_data/QC/ /ChIP-seq/1.raw_data/raw_data_1.fq.gz /ChIP-seq/1.raw_data/raw_data_2.fq.gz
 ```
 
 ### ii.Trimming after QC
-Based on the quality control results, you can perform appropriate trimming on the raw data.
+Based on the quality control results, you can perform appropriate trimming on the raw data./
 
 ```
 NO SPECIFIC CODE
