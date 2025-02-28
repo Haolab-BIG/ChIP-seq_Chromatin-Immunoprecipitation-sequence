@@ -52,52 +52,52 @@ You can perform quality check on the raw data to assess the sequencing quality.
 fastqc -o /ChIP-seq/1.raw_data/QC/ /ChIP-seq/1.raw_data/raw_data_1.fq.gz /ChIP-seq/1.raw_data/raw_data_2.fq.gz
 ```
 
-### ii. Trimming after QC
+### ii. Trimming After QC
 Based on the quality control results, you can perform appropriate trimming on the raw data.
 
 ```
 NO SPECIFIC CODE
 ```
 
-### iii. Mapping clean data to genome, filtering and remove duplicates
+### iii. Mapping Clean Data to Genome, Filtering and Remove Duplicates
 Align the cleaned data obtained in the previous step to the reference genome of the corresponding species. After filtering for high-quality sequences and removing duplicates, the resulting data will be prepared for further analysis.
 
-#### 1. Mapping, filtering
+#### 1. Mapping, Filtering
 Align the quality-controlled FASTQ files to the reference genome, filter for high-quality aligned sequences, and perform sorting.
 
 ```
 bowtie2 -t -k 1 --end-to-end --sensitive -p 20 --fr --no-mixed --no-discordant -X 1000 -x referrence_species_index -1 /ChIP-seq/2.clean_data/clean_data_1.fq.gz -2 /ChIP-seq/2.clean_data/clean_data_2.fq.gz 2> /ChIP-seq/3.bam/map_statistics/ | samtools view -q 255 -bS - | samtools sort - -o /ChIP-seq/3.bam/uniq_bam/uniq.sorted.bam
 ```
 
-#### 2. BAM indexing
+#### 2. BAM Indexing
 Index the sorted files.
 
 ```
 samtools index /ChIP-seq/3.bam/uniq_bam/uniq.sorted.bam
 ```
 
-#### 3. Remove duplicates
+#### 3. Remove Duplicates
 Remove duplicate sequences.
 
 ```
 java -jar picard.jar MarkDuplicates I=/ChIP-seq/3.bam/uniq_bam/uniq.sorted.bam O=/ChIP-seq/3.bam/rmD_bam/.rmD.bam M=/ChIP-seq/3.bam/rmD_bam/marked_dup_metrics.txt REMOVE_DUPLICATES=true
 ```
 
-### iv. peakcalling
+### iv. Peakcalling
 Identify regions of read enrichment based on the alignment results.
 
 ```
 macs3 callpeak -t /ChIP-seq/3.bam/rmD_bam/Treated.rmD.bam -c /ChIP-seq/3.bam/rmD_bam/Ctrl.rmD.bam -f BAMPE -g species --outdir /ChIP-seq/6.peaks/ -n prefiix --broad --cutoff-analysis
 ```
 
-#### 1. peaks quality check
+#### 1. Peaks Quality Check
 Assess the quality of the peaks.
 
 ```
 computeMatrix scale-regions -S /ChIP-seq/5.bw/.bw -R /ChIP-seq/6.peaks/prefix_peaks_broadPeak.bed --beforeRegionStartLength 10000 --regionBodyLength 5000 --afterRegionStartLength 10000 --skipZeros -o /ChIP-seq/6.bw/commputeMatrix/.mat.gz -p 20
 ```
 
-**'.bw' file comes from Part (IV.i)**
+* *'.bw' file comes from Part (IV.i)* *
 
 ### OUTPUT 1
 After completing the above steps, you will obtain a table similar to the one shown in 'example_report.ppt', slide (2), with columns including:
@@ -117,7 +117,7 @@ plotFingerprint -b /ChIP-seq/3.bam/rmD_bam/.rmD.bam --labels label1 label2 --ski
 **By generating a fingerprint plot, you can identify the types of peaks, assess antibody strength to verify the effectiveness of immunoprecipitation (IP).**
 
 
-## Part IV Visualization on Genome Browser & Check the correlation in samples
+## Part IV Visualization on Genome Browser & Check the Correlation in Samples
 Convert the alignment results into files with lower resolution but smaller size for easier browsing across the genome; simultaneously, assess the correlation among the experimental samples.
 
 ### i. Visualization on Genome Browser: BAM2BW
@@ -127,7 +127,7 @@ You can visualize these results in the UCSC genome browser or IGV genome browser
 bamCoverage --numberOfProcessors 20 -v -b /ChIP-seq/3.bam/rmD_bam/.rmD.bam -o /ChIP-seq/5.bw/.bw --normalizeUsing CPM --binSize 10 --ignoreDuplicates --smoothLength 50 --skipNAs --ignoreForNormalization chrM
 ```
 
-### ii. Check the correlation in samples
+### ii. Check the Correlation in Samples
 you will obtain a plot similar to the one shown in 'example_report.ppt', slide (5,6)
 
 ```
