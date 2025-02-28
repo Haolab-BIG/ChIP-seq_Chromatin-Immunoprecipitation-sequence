@@ -132,9 +132,16 @@ you will obtain a plot similar to the one shown in 'example_report.ppt', slide (
 
 ```
 multiBigwigSummary bins -b /ChIP-seq/5.bw/.bw --labels label1 label2 label3 -out /ChIP-seq/5.bw/multiBigWigSummary/.npz
+```
+
+```
 plotPCA -in /ChIP-seq/5.bw/multiBigWigSummary/.npz -o /ChIP-seq/5.bw/PCA/PCA.pdf
+```
+
+```
 plotCorrelation  -in /ChIP-seq/5.bw/multiBigWigSummary/.npz --corMethod pearson --skipZeros -o /ChIP-seq/5.bw/PCA/correlation/cor.pdf --whatToPlot heatmap --colorMap RdYlBu --plotNumbers
 ```
+
 ### OUTPUT 3
 
 **By generating Principal Component Analysis (PCA) plots and correlation heatmaps, you can assess biological reproducibility, experimental quality, and the extent of batch effects.**
